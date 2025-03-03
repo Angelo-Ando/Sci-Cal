@@ -33,6 +33,7 @@ function Home() {
     {/* ABOUT ME */}
     <div className="div-aboutme">
       <h1 className="about-me">About Me</h1>
+      <p>Born in the Philippines on May 29th of 2003, and studying under the Bachelors of Science in Information Technology.</p>
 
       <table className="table table-bordered first-table">
         <thead>
