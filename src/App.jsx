@@ -1,15 +1,39 @@
 import React, { useState } from "react";
-import "./App.css"; 
+import "./App.css";
 
 const ScientificCalculator = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
-  const [memory, setMemory] = useState(0);
 
   const handleButtonClick = (value) => {
     if (value === "=") {
       try {
-        setResult(eval(input));
+        let expression = input
+          .replace(/sin\(/g, "Math.sin(")
+          .replace(/cos\(/g, "Math.cos(")
+          .replace(/tan\(/g, "Math.tan(")
+          .replace(/asin\(/g, "Math.asin(")
+          .replace(/acos\(/g, "Math.acos(")
+          .replace(/atan\(/g, "Math.atan(")
+          .replace(/(\d+)\s*\(/g, "$1*("); 
+
+        
+        expression = expression
+          .replace(/Math\.sin\(/g, "Math.sin((Math.PI/180)*")
+          .replace(/Math\.cos\(/g, "Math.cos((Math.PI/180)*")
+          .replace(/Math\.tan\(/g, "Math.tan((Math.PI/180)*");
+
+        let computedResult = eval(expression); 
+
+        
+        expression = expression
+          .replace(/Math\.asin\(/g, "(180/Math.PI)*Math.asin(")
+          .replace(/Math\.acos\(/g, "(180/Math.PI)*Math.acos(")
+          .replace(/Math\.atan\(/g, "(180/Math.PI)*Math.atan(");
+
+        computedResult = eval(expression); 
+
+        setResult(computedResult.toFixed(4)); 
       } catch {
         setResult("Error");
       }
@@ -31,13 +55,14 @@ const ScientificCalculator = () => {
       setInput(input + "3.1416");
       return;
     }
+
     if (value === "e") {
       setInput(input + "2.7183");
       return;
     }
 
     if (["sin", "cos", "tan", "asin", "acos", "atan"].includes(value)) {
-      setInput(`${value}(${input})`);
+      setInput(`${value}(${input})`); 
       return;
     }
 
@@ -65,11 +90,11 @@ const ScientificCalculator = () => {
     }
 
     if (value === "log") {
-      setInput(`log10(${input})`);
+      setInput(`Math.log10(${input})`);
       return;
     }
     if (value === "ln") {
-      setInput(`ln(${input})`);
+      setInput(`Math.log(${input})`);
       return;
     }
 
