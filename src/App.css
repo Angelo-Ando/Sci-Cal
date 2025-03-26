@@ -1,118 +1,108 @@
-
-
-body {
-  margin: 0;
-  display: flex;
-  text-align: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: lightgoldenrodyellow;
-  animation: body-ani 5s infinite;
-}
-@keyframes body-ani {
-  0% {background-color: lightgoldenrodyellow;}
-  25% {background-color: pink;}
-  50% {background-color: lightcyan;}
-  75% {background-color: lightgreen;}
-  100% {background-color: lightgoldenrodyellow;}
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
+.mainCalcuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 75vw;
+    max-width: 500px;
+    height: auto;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 85vh;
+    overflow: hidden;
 }
 
-.ultimate-div {
-  font-family: monospace;
-  font-weight: bolder;
+.SolutionTxtbox, .AnswerTxtbox {
+    width: 90%;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
-/* Angelo Intro*/
-.h1-angelo {
-  animation: h1-angelo 2s infinite;
-}
-@keyframes h1-angelo {
-  25% {font-family: monospace;}
-  50% {font-family: 'Times New Roman', Times, serif;}
-  75% {font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
-  100% {font-family: Verdana, Geneva, Tahoma, sans-serif;}
+.btnContainers1 {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
-.img-angelo {
-  height: 230px; width: 230px;
-  border-radius: 50%;
-  border: 7px solid blue;
-  animation: img-angelo 1s infinite;
-}
-@keyframes img-angelo {
-  50% {border: 7px dotted red;}
-  75% {border: 7px dashed yellow;}
-  100% {border: 7px double green;}
+.btnCon1, .btnCon2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
 }
 
-/* About Me */
-.table {
-  border: 1px solid black !important;
-}
-.table1 {
-  background-color: pink !important;
-}
-.table2 {
-  background-color: palegoldenrod !important;
-}
-.table3 {
-  background-color: palegreen !important;
-}
-.table4 {
-  background-color: paleturquoise !important;
-}
-.table5 {
-  background-color: palevioletred !important;
+.dropdownContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-/* Modals */
-.modal-digart img {
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  border-radius: 12%;
-}
-.modal-ani img {
-  width: 310px;
-  height: 250px;
-  margin: 10px;
-  border-radius: 12%;
-}
-.modal-fed img, video {
-  width: 250px;
-  height: 200px;
-  margin: 10px;
-  border-radius: 12%;
+.dropdownContainer select {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
 }
 
-/* Call to Action */
-.div-action button {
-  margin: 30px;
-  width: 15%;
-  height: 10%;
+.dropdownContainer select:first-of-type {
+    width: 90px;
 }
-.bt1 {
-  animation: bt1 2s infinite;
+
+button {
+    width: 65px;
+    height: 45px;
+    margin: 2px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #d3d3d3;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
 }
-@keyframes bt1 {
-  50% {background-color: darkred; color: white;}
+
+button.num-btn {
+    background-color: lightblue;
+    color: black;
 }
-.bt2 {
-  animation: bt2 2s infinite;
+
+.btnCon1 button, .btnCon2 button {
+    background-color: #ffcc99;
 }
-@keyframes bt2 {
-  50% {background-color: darkblue; color: white;}
+
+.secondButton {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    font-weight: bold;
 }
-.bt3 {
-  animation: bt3 2s infinite;
+
+.secondButton.active {
+    background-color: lightblue;
+    color: black;
 }
-@keyframes bt3 {
-  50% {background-color: darkgreen; color: white;}
+
+button.clear-btn {
+    background-color: lightcoral;
+}
+
+button.equals-btn {
+    background-color: rgb(55, 178, 218);
 }
