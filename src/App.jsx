@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./App.css"; 
 
 const ScientificCalculator = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
-  const [secondModeDropdown, setSecondModeDropdown] = useState(false);
-  const [secondModeButtons, setSecondModeButtons] = useState(false);
-
-  const toggleSecondModeDropdown = () => {
-    setSecondModeDropdown(!secondModeDropdown);
-  };
-
-  const toggleSecondModeButtons = () => {
-    setSecondModeButtons(!secondModeButtons);
-  };
+  const [memory, setMemory] = useState(0);
 
   const handleButtonClick = (value) => {
     if (value === "=") {
@@ -25,29 +16,95 @@ const ScientificCalculator = () => {
       return;
     }
 
-    if (value === "C") {
+    if (value === "AC") {
       setInput("");
       setResult("");
       return;
     }
 
-    if (value === "Del") {
+    if (value === "DEL") {
       setInput(input.slice(0, -1));
       return;
     }
 
-    const lastChar = input.slice(-1);
-
-    if (["+", "*", "/"].includes(value) && ["+", "*", "/"].includes(lastChar)) {
-      return; // Prevent consecutive operators
+    if (value === "π") {
+      setInput(input + "3.1416");
+      return;
     }
-
-    if (value === "-" && (!input || ["+", "*", "/"].includes(lastChar))) {
-      setInput(input + value);
+    if (value === "e") {
+      setInput(input + "2.7183");
       return;
     }
 
-    if (value !== "-" && ["+", "*", "/"].includes(lastChar) && ["+", "*", "/"].includes(value)) {
+    if (["sin", "cos", "tan", "asin", "acos", "atan"].includes(value)) {
+      setInput(`${value}(${input})`);
+      return;
+    }
+
+    if (value === "x²") {
+      setInput(`(${input})**2`);
+      return;
+    }
+    if (value === "x³") {
+      setInput(`(${input})**3`);
+      return;
+    }
+
+    if (value === "√") {
+      setInput(`(${input})**(1/2)`);
+      return;
+    }
+    if (value === "∛") {
+      setInput(`(${input})**(1/3)`);
+      return;
+    }
+
+    if (value === "x^y") {
+      setInput(input + "**");
+      return;
+    }
+
+    if (value === "log") {
+      setInput(`log10(${input})`);
+      return;
+    }
+    if (value === "ln") {
+      setInput(`ln(${input})`);
+      return;
+    }
+
+    if (value === "EXP") {
+      setInput(input + "E");
+      return;
+    }
+
+    if (value === "n!") {
+      const factorial = (num) => (num <= 1 ? 1 : num * factorial(num - 1));
+      try {
+        setResult(factorial(parseInt(input)));
+      } catch {
+        setResult("Error");
+      }
+      return;
+    }
+
+    if (value === "1/x") {
+      setInput(`1/(${input})`);
+      return;
+    }
+
+    if (value === "Deg") {
+      setInput(`${input} * (Math.PI / 180)`);
+      return;
+    }
+
+    if (value === "Rad") {
+      setInput(`${input} * (180 / Math.PI)`);
+      return;
+    }
+
+    if (value === "Ans") {
+      setInput(input + result);
       return;
     }
 
@@ -55,80 +112,34 @@ const ScientificCalculator = () => {
   };
 
   return (
-    <div className="mainCalcuContainer">
+    <div className="calculator-container">
       <input
         type="text"
-        className="SolutionTxtbox"
+        className="display"
         value={input}
-        onChange={() => {}}
-        placeholder="Input your solutions here"
+        readOnly
+        placeholder="Input"
       />
       <input
         type="text"
-        className="AnswerTxtbox"
+        className="display result"
         value={result}
-        onChange={() => {}}
+        readOnly
         placeholder="Result"
       />
 
-      <div className="btnContainers1">
-        <div className="btnCon1">
-          {["DEG", "F-E", "MC", "MR"].map((btn) => (
-            <button key={btn}>{btn}</button>
-          ))}
-        </div>
-        <div className="btnCon2">
-          {["M+", "M-", "MS", "Mv"].map((btn) => (
-            <button key={btn}>{btn}</button>
-          ))}
-        </div>
-      </div>
-
-      <div className="dropdownContainer">
-        <button
-          className={`secondButton ${secondModeDropdown ? "active" : ""}`}
-          onClick={toggleSecondModeDropdown}
-        >
-          2nd
-        </button>
-        <select>
-          {["sin", "cos", "tan", "hyp", "sec", "csc", "cot"].map((func) => (
-            <option key={func}>{secondModeDropdown ? `${func}-1` : func}</option>
-          ))}
-        </select>
-        <select>
-          {["abs", "floor", "ceil", "rand", "->dms", "->deg"].map((func) => (
-            <option key={func}>{func}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="allBtnsContainer">
+      <div className="buttons">
         {[
-          ["2nd", "π", "e", "C", "Del"],
-          [secondModeButtons ? "x^3" : "x^2", "1/x", "abs", "exp", "mod"],
-          [secondModeButtons ? "3√x" : "2√x", "(", ")", "n!", "/"],
-          [secondModeButtons ? "y√x" : "x^y", "7", "8", "9", "*"],
-          [secondModeButtons ? "2^x" : "10^x", "4", "5", "6", "-"],
-          [secondModeButtons ? "logyX" : "log", "1", "2", "3", "+"],
-          [secondModeButtons ? "e^x" : "ln", "+/-", "0", ".", "="]
-        ].map((row, rowIndex) => (
-          <div key={rowIndex} className="flex gap-1">
-            {row.map((btn) => (
-              <button
-                key={btn}
-                className={`
-                  ${btn === "2nd" ? "secondButton" : ""}
-                  ${btn === "=" ? "equals-btn" : ""}
-                  ${btn === "C" || btn === "Del" ? "clear-btn" : ""}
-                  ${["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(btn) ? "num-btn" : ""}
-                `}
-                onClick={() => handleButtonClick(btn)}
-              >
-                {btn}
-              </button>
-            ))}
-          </div>
+          "Deg", "Rad", "π", "e", "AC", "DEL",
+          "sin", "cos", "tan", "asin", "acos", "atan",
+          "x²", "x³", "√", "∛", "x^y", "log", "ln",
+          "EXP", "n!", "1/x", "7", "8", "9", "/",
+          "4", "5", "6", "*", "1", "2", "3", "-",
+          "0", ".", "=", "+", "Ans"
+        ].map((btn) => (
+          <button key={btn} onClick={() => handleButtonClick(btn)}>
+            {btn}
+          </button>
         ))}
       </div>
     </div>

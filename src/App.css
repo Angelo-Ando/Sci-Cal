@@ -1,108 +1,80 @@
-.mainCalcuContainer {
+.calculator-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
+    background-color: #f3f3f3;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    width: 75vw;
-    max-width: 500px;
-    height: auto;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-height: 85vh;
-    overflow: hidden;
-}
-
-.SolutionTxtbox, .AnswerTxtbox {
+  }
+  
+  .display {
     width: 90%;
-    text-align: center;
+    height: 50px;
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
-    background-color: white;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.btnContainers1 {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 10px;
-}
-
-.btnCon1, .btnCon2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 5px;
-}
-
-.dropdownContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.dropdownContainer select {
-    border: 1px solid #000000;
-    border-radius: 10px;
-    padding: 8px;
-    font-size: 1rem;
-    background-color: white;
-    cursor: pointer;
-}
-
-.dropdownContainer select:first-of-type {
-    width: 90px;
-}
-
-button {
-    width: 65px;
-    height: 45px;
-    margin: 2px;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #d3d3d3;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 1rem;
+    border: none;
+    background: #fff;
     border-radius: 5px;
-}
-
-button.num-btn {
-    background-color: lightblue;
-    color: black;
-}
-
-.btnCon1 button, .btnCon2 button {
-    background-color: #ffcc99;
-}
-
-.secondButton {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #e0e0e0;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .display.result {
     font-weight: bold;
-}
-
-.secondButton.active {
-    background-color: lightblue;
+    background: #e0e0e0;
+  }
+  
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+  }
+  
+  button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  button:nth-child(5), 
+  button:nth-child(6) {
+    background-color: #ffcc00;
     color: black;
-}
-
-button.clear-btn {
-    background-color: lightcoral;
-}
-
-button.equals-btn {
-    background-color: rgb(55, 178, 218);
-}
+  }
+  
+  button:nth-child(5):hover, 
+  button:nth-child(6):hover {
+    background-color: #e6b800;
+  }
+  
+  
+  @media (max-width: 400px) {
+    .buttons {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .display {
+      font-size: 18px;
+    }
+  }
+  
