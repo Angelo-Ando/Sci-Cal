@@ -93,49 +93,75 @@ const ScientificCalculator = () => {
     }
 
     if (value === "log") {
-      setInput(`Math.log10(${input})`);
-      return;
-    }
-    if (value === "ln") {
-      setInput(`Math.log(${input})`);
-      return;
-    }
-
-    if (value === "EXP") {
-      setInput(input + "E");
-      return;
-    }
-
-    if (value === "n!") {
-      const factorial = (num) => (num <= 1 ? 1 : num * factorial(num - 1));
       try {
-        setResult(factorial(parseInt(input)));
+          const logResult = Math.log10(eval(input));
+          setResult(logResult.toFixed(4));
       } catch {
-        setResult("Error");
+          setResult("Error");
       }
       return;
-    }
+  }
+
+  if (value === "ln") {
+      try {
+          const lnResult = Math.log(eval(input));
+          setResult(lnResult.toFixed(4));
+      } catch {
+          setResult("Error");
+      }
+      return;
+  }
+
+  if (value === "EXP") {
+      setInput(input + "E");
+      return;
+  }
+
+  if (value === "n!") {
+      const factorial = (num) => (num <= 1 ? 1 : num * factorial(num - 1));
+      try {
+          const factResult = factorial(parseInt(eval(input)));
+          setResult(factResult);
+      } catch {
+          setResult("Error");
+      }
+      return;
+  }
 
     if (value === "1/x") {
-      setInput(`1/(${input})`);
+      try {
+          const reciprocal = 1 / eval(input);
+          setResult(reciprocal.toFixed(4));
+      } catch {
+          setResult("Error");
+      }
       return;
-    }
-
-    if (value === "Deg") {
-      setInput(`${input} * (Math.PI / 180)`);
+  }
+  
+  if (value === "Deg") {
+      try {
+          const radians = eval(input) * (Math.PI / 180);
+          setResult(radians.toFixed(4));
+      } catch {
+          setResult("Error");
+      }
       return;
-    }
-
-    if (value === "Rad") {
-      setInput(`${input} * (180 / Math.PI)`);
+  }
+  
+  if (value === "Rad") {
+      try {
+          const degrees = eval(input) * (180 / Math.PI);
+          setResult(degrees.toFixed(4));
+      } catch {
+          setResult("Error");
+      }
       return;
-    }
-
-    if (value === "Ans") {
-      setInput(result);  // Replace input with result
-      setResult(""); // Clear result after transferring to input
+  }
+  
+  if (value === "Ans") {
+      setInput(input + result);
       return;
-    }
+  }
 
     if (value === "(") {
       setInput(input + "(");
