@@ -99,11 +99,8 @@ button:active {
 }
 
 @media (max-width: 400px) {
-  .buttons {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .display {
-    font-size: 18px;
+  .calculator-container{
+    width: 85%;
   }
 }
 
@@ -120,12 +117,6 @@ button:active {
   
   button:active {
     transform: scale(0.95);
-  }
-  
-  button:nth-child(5), 
-  button:nth-child(6) {
-    background-color: #ffcc00;
-    color: black;
   }
   
   button:nth-child(5):hover, 
