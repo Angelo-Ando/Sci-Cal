@@ -105,4 +105,36 @@ button:active {
   .display {
     font-size: 18px;
   }
+<<<<<<< HEAD
 }
+=======
+  
+  button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  button:nth-child(5), 
+  button:nth-child(6) {
+    background-color: #ffcc00;
+    color: black;
+  }
+  
+  button:nth-child(5):hover, 
+  button:nth-child(6):hover {
+    background-color: #e6b800;
+  }
+  
+  
+  @media (max-width: 400px) {
+    .buttons {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .display {
+      font-size: 18px;
+    }
+  }
+>>>>>>> 65d9cc5 (some css update)
