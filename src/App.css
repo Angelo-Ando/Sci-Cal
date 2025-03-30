@@ -4,16 +4,19 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  background-color: #121212;
+  color: #ffffff;
 }
 
 .calculator-container {
   width: 100%;
   max-width: 350px;
   margin: 20px auto;
-  background-color: #f3f3f3;
+  background-color: #1e1e1e;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #6f6f6f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,45 +24,51 @@ body {
 
 .display {
   width: 90%;
-  height: 50px;
+  height: 25px;
   text-align: right;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
   padding: 10px;
   border: none;
-  background: #fff;
+  background: #2a2a2a;
   border-radius: 5px;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #6f6f6f;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 .display.result {
   font-weight: bold;
-  background: #e0e0e0;
+  background: #333;
+  border: 2px solid #9e9b9b;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  padding: 10px;
+  gap: 10px;
+  padding: 12px;
   width: 100%;
 }
 
 button {
   width: 100%;
-  height: 50px;
+  height: 48px;
   font-size: 18px;
   font-weight: bold;
-  background-color: #e0e0e0;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: 0.2s;
+  background: #252525;
+  border: 2px solid #888;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 button:hover {
-  filter: brightness(85%);
+  background: #454545;
+  border-color: #aaa;
+  transform: translateY(-2px);
 }
 
 button:active {
@@ -67,39 +76,45 @@ button:active {
 }
 
 .numRemovers {
-  background-color: lightcoral;
+  border: 2px solid #ff5c5c;
+  color: white;
 }
 
 .numRemovers:hover {
-  filter: brightness(80%);
+  background: #962828;
+  border-color: #ff8080;
 }
 
 .btn-num {
-  background-color: lightblue;
+  border: 2px solid #4a90e2;
 }
 
 .btn-num:hover {
-  filter: brightness(80%);
+  background: #29507d;
+  border-color: #6aa9ff;
 }
 
 .operator {
-  background-color: rgb(172, 196, 203);
+  border: 2px solid #4ae290;
 }
 
 .operator:hover {
-  filter: brightness(80%);
+  background: #29704d;
+  border-color: #6affaa;
 }
 
 .btn-results {
-  background-color: rgb(124, 224, 219);
+  border: 2px solid #e6db3f;
+  color: white;
 }
 
 .btn-results:hover {
-  filter: brightness(80%);
+  background: #968e26;
+  border-color: #fcef3b;
 }
 
 @media (max-width: 400px) {
-  .calculator-container{
+  .calculator-container {
     width: 85%;
   }
 }
@@ -108,18 +123,32 @@ button:active {
   body {
     height: 100%;
   }
-  
 }
-  
-  button:hover {
-    background-color: #d0d0d0;
+
+@media only screen and (max-width: 360px) and (max-height: 740px) {
+  .calculator-container {
+    width: 95%;
+    padding: 10px;
   }
-  
-  button:active {
-    transform: scale(0.95);
+
+  .display {
+    font-size: 18px;
+    height: 30px;
   }
-  
-  button:nth-child(5):hover, 
-  button:nth-child(6):hover {
-    background-color: #e6b800;
+
+  button {
+    height: 45px;
+    font-size: 16px;
   }
+
+  .buttons {
+    gap: 8px;
+  }
+}
+
+.Names {
+  font-size: small;
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 13px;
+}
